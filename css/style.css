@@ -39,3 +39,12 @@ button:hover {
 .esconder {
   display: none;
 }
+
+#nome-jogador {
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
