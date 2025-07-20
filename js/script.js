@@ -69,3 +69,40 @@ function finalizarJogo() {
 }
 
 botaoIniciar.addEventListener('click', iniciarJogo);
+
+// ... código anterior permanece igual ...
+
+function gerarTabuleiro() {
+  tabuleiro.innerHTML = '';
+  coresAtuais = [];
+
+  for (let i = 0; i < 16; i++) {
+    const corAleatoria = CORES_DISPONIVEIS[Math.floor(Math.random() * CORES_DISPONIVEIS.length)];
+    coresAtuais.push(corAleatoria);
+
+    const quadrado = document.createElement('div');
+    quadrado.classList.add('quadrado');
+    quadrado.style.backgroundColor = corAleatoria;
+    quadrado.dataset.cor = corAleatoria;
+
+    quadrado.addEventListener('click', verificarClique);
+
+    tabuleiro.appendChild(quadrado);
+  }
+}
+
+function verificarClique(evento) {
+  const corClicada = evento.target.dataset.cor;
+
+  if (corClicada === corAlvo) {
+    pontuacao += 10;
+  } else {
+    pontuacao -= 5;
+    if (pontuacao < 0) pontuacao = 0;
+  }
+
+  pontuacaoTexto.textContent = pontuacao;
+
+  gerarTabuleiro();
+  escolherCorAlvo();
+}
