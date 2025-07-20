@@ -1,0 +1,41 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+button {
+  padding: 10px 25px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.quadrado {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.esconder {
+  display: none;
+}
