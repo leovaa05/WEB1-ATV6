@@ -1,5 +1,6 @@
 const botaoIniciar = document.getElementById('botao-iniciar');
 const botaoReiniciar = document.getElementById('botao-reiniciar');
+const entradaNome = document.getElementById('entrada-nome');
 const inputNome = document.getElementById('nome-jogador');
 const areaInformacoes = document.getElementById('area-informacoes');
 const corAlvoTexto = document.getElementById('cor-alvo');
@@ -10,17 +11,17 @@ const telaFinal = document.getElementById('tela-final');
 const nomeFinal = document.getElementById('nome-final');
 const pontuacaoFinal = document.getElementById('pontuacao-final');
 
-const CORES_DISPONIVEIS = ['vermelho', 'azul', 'verde', 'amarelo', 'roxo', 'laranja', 'rosa', 'marrom'];
+const CORES_DISPONIVEIS = ['Vermelho', 'Azul', 'Verde', 'Amarelo', 'Roxo', 'Laranja', 'Rosa', 'Marrom'];
 
 const MAPA_CORES = {
-  vermelho: 'red',
-  azul: 'blue',
-  verde: 'green',
-  amarelo: 'yellow',
-  roxo: 'purple',
-  laranja: 'orange',
-  rosa: 'pink',
-  marrom: 'brown'
+  Vermelho: 'red',
+  Azul: 'blue',
+  Verde: 'green',
+  Amarelo: 'yellow',
+  Roxo: 'purple',
+  Laranja: 'orange',
+  Rosa: 'pink',
+  Marrom: 'brown'
 };
 
 let coresAtuais = [];
@@ -31,12 +32,13 @@ let intervaloTempo = null;
 
 function iniciarJogo() {
   const nome = inputNome.value.trim();
+
   if (!nome) {
     alert('Por favor, digite seu nome antes de jogar!');
     return;
   }
 
-  inputNome.classList.add('esconder');
+  entradaNome.classList.add('esconder');
   botaoIniciar.classList.add('esconder');
   telaFinal.classList.add('esconder');
   botaoReiniciar.classList.add('esconder');
@@ -64,7 +66,7 @@ function gerarTabuleiro() {
 
     const quadrado = document.createElement('div');
     quadrado.classList.add('quadrado');
-    quadrado.style.backgroundColor = MAPA_CORES[corAleatoria]; // Usa cor em inglês para o estilo
+    quadrado.style.backgroundColor = MAPA_CORES[corAleatoria]; // Usar cor em inglês
     quadrado.dataset.cor = corAleatoria;
 
     quadrado.addEventListener('click', verificarClique);
@@ -77,19 +79,6 @@ function escolherCorAlvo() {
   const corSorteada = coresAtuais[Math.floor(Math.random() * coresAtuais.length)];
   corAlvo = corSorteada;
   corAlvoTexto.textContent = corAlvo;
-}
-
-function iniciarCronometro() {
-  if (intervaloTempo) clearInterval(intervaloTempo);
-
-  intervaloTempo = setInterval(() => {
-    tempoRestante--;
-    tempoTexto.textContent = tempoRestante;
-
-    if (tempoRestante <= 0) {
-      finalizarJogo();
-    }
-  }, 1000);
 }
 
 function verificarClique(evento) {
@@ -108,6 +97,19 @@ function verificarClique(evento) {
   escolherCorAlvo();
 }
 
+function iniciarCronometro() {
+  if (intervaloTempo) clearInterval(intervaloTempo);
+
+  intervaloTempo = setInterval(() => {
+    tempoRestante--;
+    tempoTexto.textContent = tempoRestante;
+
+    if (tempoRestante <= 0) {
+      finalizarJogo();
+    }
+  }, 1000);
+}
+
 function finalizarJogo() {
   clearInterval(intervaloTempo);
 
@@ -124,13 +126,15 @@ function finalizarJogo() {
 botaoIniciar.addEventListener('click', iniciarJogo);
 
 botaoReiniciar.addEventListener('click', () => {
+  // Resetar visual para o início
   telaFinal.classList.add('esconder');
-  inputNome.classList.remove('esconder');
+  entradaNome.classList.remove('esconder');
   botaoIniciar.classList.remove('esconder');
   botaoReiniciar.classList.add('esconder');
+
   pontuacao = 0;
-  pontuacaoTexto.textContent = pontuacao;
   tempoTexto.textContent = '--';
+  pontuacaoTexto.textContent = '0';
   corAlvoTexto.textContent = '---';
   tabuleiro.innerHTML = '';
 });

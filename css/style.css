@@ -1,50 +1,107 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #fdfbfb, #ebedee);
+  color: #333;
   text-align: center;
-  padding: 20px;
-  background-color: #f4f4f4;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #4A90E2;
+  margin-bottom: 30px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+#nome-jogador {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 250px;
+  margin-bottom: 20px;
 }
 
 button {
-  padding: 10px 25px;
-  font-size: 16px;
-  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  margin: 15px 10px;
   cursor: pointer;
   border: none;
   border-radius: 8px;
   background-color: #4CAF50;
   color: white;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #3e8e41;
+}
+
+#area-informacoes {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+#area-informacoes span {
+  font-weight: bold;
+  color: #222;
 }
 
 .grade {
   display: grid;
-  grid-template-columns: repeat(4, 80px);
-  gap: 10px;
+  grid-template-columns: repeat(4, 90px);
+  gap: 15px;
   justify-content: center;
-  margin-top: 20px;
+  margin: 30px auto;
 }
 
 .quadrado {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  border: 2px solid #999;
   cursor: pointer;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quadrado:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#tela-final {
+  margin-top: 40px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#tela-final h2 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+}
+
+#tela-final p {
+  font-size: 1.2rem;
+  margin: 10px 0;
 }
 
 .esconder {
   display: none;
 }
 
-#nome-jogador {
-  padding: 8px;
-  font-size: 16px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 200px;
+html, body {
+  height: 100%;
 }
